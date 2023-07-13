@@ -1,6 +1,5 @@
 package com.mindex.challenge.data;
 
-import com.mindex.challenge.data.Employee;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.math.BigDecimal;
 import java.time.LocalDate;

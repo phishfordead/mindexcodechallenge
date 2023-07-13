@@ -1,8 +1,5 @@
 package com.mindex.challenge.data;
 
-import com.mindex.challenge.data.Employee;
-import java.util.List;
-
 // class:       ReportingStructure
 // description: ReportingStructure holds an Employee and its number of 
 //              directReports for an employee and all of their distinct reports.
@@ -30,7 +27,7 @@ public class ReportingStructure {
     public void setNumberOfReports(int val){
         numberOfReports = val;
     }
-    
+
     public int getNumberOfReports(){
         return numberOfReports;
     }

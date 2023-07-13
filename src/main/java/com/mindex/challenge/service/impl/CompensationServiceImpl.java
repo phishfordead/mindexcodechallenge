@@ -36,12 +36,12 @@ public class CompensationServiceImpl implements CompensationService {
         }
 
         // ensure compensation
-        // String employeeId = e.getEmployeeId();
-        // Compensation existing = compensationRepository.findByEmployee_EmployeeId(employeeId);
-        // if(existing != null)
-        // {
-        //     throw new RuntimeException("Compensation already exists for employee "+employeeId);
-        // }
+        String employeeId = e.getEmployeeId();
+        Compensation existing = compensationRepository.findByEmployee_EmployeeId(employeeId);
+        if(existing != null)
+        {
+            throw new RuntimeException("Compensation already exists for employee "+employeeId);
+        }
 
         // attempt to insert the compensation
         Compensation created = compensationRepository.insert(compensation);
