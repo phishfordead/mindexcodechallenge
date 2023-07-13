@@ -3,6 +3,7 @@ package com.mindex.challenge.service.impl;
 import com.mindex.challenge.dao.CompensationRepository;
 import com.mindex.challenge.data.Compensation;
 import com.mindex.challenge.service.CompensationService;
+import com.mindex.challenge.data.Employee;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,19 @@ public class CompensationServiceImpl implements CompensationService {
     @Override
     public Compensation create(Compensation compensation) {
         LOG.debug("Creating employee [{}]", compensation);
-        compensationRepository.insert(compensation);
+
+        Employee e = compensation.getEmployee();
+        if(e == null){
+            throw new RuntimeException("Compensation must have an Employee");
+        }
+
+        Compensation created = compensationRepository.insert(compensation);
+
+        if(created == null)
+        {
+            throw new RuntimeException("Error creating Compensation.");
+        }
+
         return compensation;
     }
 
@@ -30,7 +43,7 @@ public class CompensationServiceImpl implements CompensationService {
         Compensation compensation = compensationRepository.findByEmployee_EmployeeId(id);
 
         if (compensation == null) {
-            throw new RuntimeException("Invalid employeeId: " + id);
+            throw new RuntimeException("Error getting compensation for employee id: " + id);
         }
 
         return compensation;
