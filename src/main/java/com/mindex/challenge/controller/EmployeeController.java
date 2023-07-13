@@ -76,6 +76,7 @@ public class EmployeeController {
     // function: readCompensation
     // parameters: id - string containing the Id of a specific employee
     // returns: The Compensation object for the employee with the specific *id*.
+    // description: REST endpoint for reading an employee's compensation
     @GetMapping("/employee/compensation/{id}")
     public Compensation readCompensation(@PathVariable String id) {
         LOG.debug("Received employee compensation read request for id [{}]", id);
