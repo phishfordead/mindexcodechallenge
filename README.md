@@ -11,6 +11,8 @@ The application may be executed by running `gradlew bootRun`.
 ### How to Use
 The following endpoints are available to use:
 
+For all endpoints that require an "id" in the URL, this is the "employeeId" field.
+
 #### Employee
 ```
 * CREATE
@@ -104,7 +106,9 @@ The Employee has a JSON schema of:
 }
 ```
 
-For all endpoints that require an "id" in the URL, this is the "employeeId" field.
+The "effectiveDate" of the Compensation object is expected to be in "MM/dd/yyyy" format.
+
+
 
 
 ## Original Instructions Below
