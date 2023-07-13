@@ -42,7 +42,7 @@ public class CompensationServiceImplTest {
     }
 
     @Test
-    public void testCreateReadUpdate() {
+    public void testCreateRead() {
         // create a test employee
         Employee employee = createEmployee();
 
@@ -65,6 +65,9 @@ public class CompensationServiceImplTest {
         assertEquivalence(createdCompensation, readCompensation);
     }
 
+    // function: createEmployee
+    // returns: A new test Employee.
+    // description: Creates a test employee.
     private Employee createEmployee(){
         Employee testEmployee = new Employee();
         testEmployee.setFirstName("John");
@@ -72,11 +75,16 @@ public class CompensationServiceImplTest {
         testEmployee.setDepartment("Engineering");
         testEmployee.setPosition("Developer");
 
-        // Create checks
+        // Create employee
         Employee createdEmployee = restTemplate.postForEntity(employeeUrl, testEmployee, Employee.class).getBody();
         return createdEmployee;
     }
 
+    // function: assertEquivalence
+    // parameters: expected - The Compensation object the way it is expected to be
+    //             actual - The Compensation object the way it actually is.
+    // description: Asserts the equivalence of the expected an actual values of the Compensation
+    //              objects.
     private static void assertEquivalence(Compensation expected, Compensation actual) {
         assertEquals(expected.getEmployee().getEmployeeId(), actual.getEmployee().getEmployeeId());
         assertEquals(expected.getSalary(), actual.getSalary());
